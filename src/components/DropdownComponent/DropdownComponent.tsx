@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import TextBanner from '../TextBanner/TextBanner';
+import { TextBanner } from '../TextBanner/TextBanner';
 import { chevron } from '../../assets';
 import { ICurrencies } from '../../redux/slices/interfaces';
 import styles from './DropdownComponent.module.css';
+import { ICurrencyData } from '../CurrencyDropdown/CurrencyDropdown';
 
-const DropdownComponent = ({ data }) => {
+export const DropdownComponent = ({ data }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [itemTitle, setItemTitle] = useState<string>(data[0].currencyName);
   const [selectedItem, setSelectedItem] = useState<string>(data[0].currencyId);
@@ -29,7 +30,7 @@ const DropdownComponent = ({ data }) => {
   };
 
   const itemLabel = selectedItem
-    ? data?.find((option) => option.currencyId === selectedItem)?.currencyId
+    ? data?.find((option: ICurrencyData) => option.currencyId === selectedItem)?.currencyId
     : data[0].currencyId;
 
   return (
@@ -59,5 +60,3 @@ const DropdownComponent = ({ data }) => {
     </div>
   );
 };
-
-export default DropdownComponent;

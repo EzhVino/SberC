@@ -1,23 +1,23 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
-import KittenImg from './KittenImg/KittenImg'
+import React from 'react';
+import { useEffect, useState } from 'react';
+import { KittenImg } from './KittenImg/KittenImg';
 
-import styles from './Header.module.css'
+import styles from './Header.module.css';
 
 export const Header = () => {
-  const [width, setWidth] = useState(window.innerWidth)
+  const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const handleResize = () => {
-      setWidth(window.innerWidth)
-    }
+      setWidth(window.innerWidth);
+    };
 
-    window.addEventListener('resize', handleResize)
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize)
-    }
-  }, [])
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
 
   return (
     <>
@@ -29,7 +29,6 @@ export const Header = () => {
 
         {width > 498 ? <KittenImg /> : null}
       </header>
-      {/* <KittenImg /> */}
     </>
-  )
-}
+  );
+};
